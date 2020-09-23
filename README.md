@@ -6,7 +6,7 @@
 
 
    Es necesario tener instalado [maven](https://maven.apache.org/ "maven") en el equipo que se desee correr el programa. Abra la consola y ubiquese donde desea tener 
-   este proyecto, inserte el comando `git clone https://github.com/angipaola10/LAB5-ARSW` para clonar el proyecto en su computador, se creará la carpera **/LAB6-
+   este proyecto, inserte el comando `git clone https://github.com/angipaola10/LAB6-ARSW` para clonar el proyecto en su computador, se creará la carpera **/LAB6-
    ARSW**
 
    * **Compilar**
@@ -29,7 +29,7 @@
 
 ### Descripción 
 
-![mock](HeavyClientCINEMA/img/mock_.png)
+![mock](HeavyClientCINEMA/img/mock.png)
 
 Se desea generar una pequeña interfaz de administrador para el sistema de gestión de compra/reserva de boletos de cine. Para efectos prácticos del ejercicio se creará un espacio en la misma pantalla destinado para esto, tal y como se ve en el mock provisto.
 
