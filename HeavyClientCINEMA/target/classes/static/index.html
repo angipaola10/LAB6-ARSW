@@ -61,17 +61,19 @@
           </div>
       </div>
 
-      <div id="Availability" class="col-5 mt-5 ml-5" style="visibility: hidden;">
-
-        <h5 class="mt-5" id ="availabilityOf"></h5>
-          <canvas style=height: 50vh;" class="col-12 mt-3" id="seatsCanvas"></canvas>
-        <div class= "mt-5">
-          <h6 class="mt-2">Number of available chairs:</h6>
-          <h6 class="mt-4">Seat</h6>
-          <div class="row col-12 mt-2 align-items-center">
-            <input type="number" placeholder="Row" class="form-control col-2" required autofocus></input>
-            <input type="number" placeholder="Column" class="form-control col-2 ml-2" required></input>
-            <button class="ml-2 btn btn-outline-primary my-sm-0 col-2">Buy</button>
+      <div id="Availability" class="row col-5 ml-5 justify-content-center" style="visibility: hidden;">
+        <h4 class="mt-5" id ="availabilityOf"></h4>
+        <canvas style="height: 50vh; border: 1px solid#C0C0C0; border-radius: 5px;" class="col-12 mt-2" id="seatsCanvas"></canvas>
+        <div class= "row mt-3 container justify-content-center" style="border: 1px solid#C0C0C0; padding: 15px; margin-bottom: 15px; border-radius: 5px;">
+          <h5>Administrator mode</h5>
+          <div class="row col-12 mt-3 align-items-center justify-content-cente">
+            <h6 class="mt-4">Edit function</h6>
+            <input type="text" placeholder="New hour" class="form-control col-4 ml-2" required autofocus></input>
+            <button class="ml-2 btn btn-outline-primary my-sm-0 col-4">Save/Update</button>
+          </div>
+          <div class="row col-12 mt-3 justify-content-center">
+            <button class="btn btn-outline-primary my-sm-0 col-5">Create a new function</button>
+            <button class="ml-2 btn btn-outline-primary my-sm-0 col-5">Delete function</button>
           </div>
         </div>
 
@@ -84,4 +86,4 @@
     <script src="js/apimock.js"></script>
     <script src="js/app.js"></script>
   </body>
-</html>
+</ht

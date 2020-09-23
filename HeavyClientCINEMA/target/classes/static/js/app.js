@@ -3,7 +3,7 @@ app = (function (){
     var _cinema;
     var _date;
     var _functions;
-    var _module = "js/apimock.js";
+    var _module = "js/apiclient.js";
 
     function _setCinemaName(cinema) {
         _cinema = cinema;
@@ -79,6 +79,10 @@ app = (function (){
         var ctx = canvas.getContext("2d");
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.beginPath();
+    }
+
+    function _updateFunction(f, newHour){
+        f.date = _date
     }
     
 
