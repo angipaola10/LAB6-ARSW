@@ -39,6 +39,7 @@ public class Cinema {
     public void addFunction(CinemaFunction cf) throws CinemaModelException{
         for(CinemaFunction c: functions){
             if (c.equals(cf)){
+
                 throw new CinemaModelException("This function already exists");
             }
         }
@@ -96,5 +97,18 @@ public class Cinema {
         }
         functions.add(i, cf);
     }
-    
+
+    public void deleteFunction(CinemaFunction cf) throws CinemaModelException {
+        int i = 0;
+        for(i = 0; i < functions.size(); i++){
+            if(functions.get(i).equals(cf)){
+                synchronized(functions.get(i)){
+                    functions.remove(functions.get(i)); break;
+                }
+            }
+        }
+        if(i == functions.size()){
+            throw new CinemaModelException("No exists this function");
+        }
+    }
 }

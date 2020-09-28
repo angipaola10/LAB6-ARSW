@@ -130,4 +130,14 @@ public class InMemoryCinemaPersistence implements CinemaPersitence{
         getCinema(cinema).setFunction(cinema, cf);
      }
 
+    @Override
+    public void deleteFunction(String cinema, CinemaFunction cf) throws CinemaPersistenceException {
+        try {
+            getCinema(cinema).deleteFunction(cf);
+        }catch (CinemaModelException e){
+            throw new CinemaPersistenceException(e.getMessage());
+        }
+
+    }
+
 }

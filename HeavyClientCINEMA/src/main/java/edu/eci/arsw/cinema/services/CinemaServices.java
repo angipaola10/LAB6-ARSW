@@ -104,4 +104,12 @@ public class CinemaServices {
             throw new CinemaException(e.getMessage());
         }
     }
+
+    public void deleteFunction(String cinema, CinemaFunction cf) throws CinemaException{
+        try{
+            cps.deleteFunction(cinema, cf);
+        }catch(CinemaPersistenceException e){
+            throw new CinemaException(e.getMessage());
+        }
+    }
 }

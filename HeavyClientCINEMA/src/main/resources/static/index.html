@@ -36,7 +36,7 @@
           <div class="row  align-items-center mt-2 ml-4">
               <input type="text" id ="cinema" placeholder="Name" class="form-control col-4 ml-1"></input>
               <input type="text" id="date" placeholder="Date" class="form-control col-4 ml-1"></input>
-              <button class="ml-1 btn btn-outline-primary my-sm-0" onclick="app.updateFunctions(cinema.value, date.value)">Get functions</button>
+              <button class="ml-1 btn btn-primary my-sm-0" onclick="app.updateFunctions(cinema.value, date.value)">Get functions</button>
           </div>
 
           <div id="functions" class="mt-5 ml-4" style="visibility: hidden;">
@@ -66,20 +66,53 @@
         <canvas style="height: 50vh; border: 1px solid#C0C0C0; border-radius: 5px;" class="col-12 mt-2" id="seatsCanvas"></canvas>
         <div class= "row mt-3 container justify-content-center" style="border: 1px solid#C0C0C0; padding: 15px; margin-bottom: 15px; border-radius: 5px;">
           <h5>Administrator mode</h5>
-          <div class="row col-12 mt-3 align-items-center justify-content-cente">
+          <div class="row col-12 mt-4 align-items-center justify-content-cente">
             <h6 class="mt-4">Edit function</h6>
-            <input type="text" placeholder="New hour" class="form-control col-4 ml-2" required autofocus></input>
-            <button class="ml-2 btn btn-outline-primary my-sm-0 col-4">Save/Update</button>
+            <input type="text" id="newHour" placeholder="New hour" class="form-control col-4 ml-2" required autofocus></input>
+            <button class="ml-2 btn btn-primary my-sm-0 col-4" onclick="app.saveOrUpdateFunction()">Save/Update</button>
           </div>
-          <div class="row col-12 mt-3 justify-content-center">
-            <button class="btn btn-outline-primary my-sm-0 col-5">Create a new function</button>
-            <button class="ml-2 btn btn-outline-primary my-sm-0 col-5">Delete function</button>
+          <div class="row col-12 mt-5 justify-content-center">
+            <button class="btn btn btn-primary my-sm-0 col-5" data-toggle="modal" data-target="#createFunction">Create a new function</button>
+            <button class="ml-2 btn btn btn-primary my-sm-0 col-5" onclick="app.deleteFunction()">Delete function</button>
           </div>
         </div>
 
       </div>
 
     </div>
+
+    <div class="modal fade" id="createFunction" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Create a new function</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label class="col-form-label">Movie Name:</label>
+                <input type="text" class="form-control" id="Movie-name">
+              </div>
+              <div class="form-group">
+                <label class="col-form-label">Movie Genre:</label>
+                <input type="text" class="form-control" id="Movie-genre">
+              </div>
+              <div class="form-group">
+                <label class="col-form-label">Hour:</label>
+                <input type="text" class="form-control" id="Function-hour">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" onclick="app.postFunction()">Create</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
     <script src="/webjars/jquery/jquery.min.js"></script>
     <script src="/webjars/bootstrap/4.5.2/js/bootstrap.min.js"></script>

@@ -69,7 +69,7 @@ public class CinemaFunction {
     }    
     
     public boolean equals(CinemaFunction cf){
-        if (date.equals(cf.getDate()) && movie.equals(cf.getMovie())){
+        if (movie.equals(cf.getMovie())){
             return true;
         }
         return false;

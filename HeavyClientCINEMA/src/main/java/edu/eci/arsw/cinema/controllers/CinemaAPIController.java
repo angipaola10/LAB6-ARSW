@@ -117,5 +117,18 @@ public class CinemaAPIController {
             } return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);         
         }        
     }
+
+    @RequestMapping(value= "/{name}", method = RequestMethod.DELETE)
+    public ResponseEntity<?> deleteCinemaFunction(@PathVariable("name") String name, @RequestBody CinemaFunction cf) throws ResourceNotFoundException{
+        try {
+            cs.deleteFunction(name, cf);
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } catch (CinemaException e) {
+            Logger.getLogger(RestController.class.getName()).log(Level.SEVERE, null, e);
+            if ( e.getMessage().equals("No exists this function") || e.getMessage().equals("No exists a cinema with name: "+name)) {
+                throw new ResourceNotFoundException(e.getMessage());
+            } return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
  
 }

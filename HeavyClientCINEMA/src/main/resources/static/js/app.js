@@ -3,6 +3,7 @@ app = (function (){
     var _cinema;
     var _date;
     var _functions;
+    var _movieName;
     var _module = "js/apiclient.js";
 
     function _setCinemaName(cinema) {
@@ -75,16 +76,34 @@ app = (function (){
     }
 
     function _clearCanvasSeats(){
+        document.getElementById('Availability').style.visibility = "hidden";
         var canvas = document.getElementById("seatsCanvas");
         var ctx = canvas.getContext("2d");
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.beginPath();
     }
 
-    function _updateFunction(f, newHour){
-        f.date = _date
+    function _refreshFunctionsData(){
+        $.getScript(_module, function(){
+            api.getFunctionsByCinemaAndDate(_cinema, _date, _updateFunctionsData);
+        });
     }
-    
+
+    function _updateFunction(f){
+        f.date = _date+" "+$("#newHour").val();
+        _hour = $("#newHour").val();
+        $.getScript(_module, function () {
+            api.putFunction(_cinema, f, _refreshFunctionsData);
+        });
+    }
+
+    function _removeFunction(f){
+        _clearCanvasSeats();
+        $.getScript(_module, function () {
+            api.deleteFunction(_cinema, f, _refreshFunctionsData);
+        });
+    }
+
 
     return{
         updateFunctions: function (cinema, date){
@@ -100,10 +119,38 @@ app = (function (){
         },
 
         openSeats: function (movieName, hour){
+            _movieName = movieName;
+            _hour = hour;
             $.getScript(_module, function(){
                 api.getFunctionByCinemaMovieAndDate(_cinema,_date+" "+hour, movieName, _updateSeats);
             });
+        },
+
+        saveOrUpdateFunction: function (){
+            $.getScript(_module, function(){
+                api.getFunctionByCinemaMovieAndDate(_cinema,_date+" "+_hour, _movieName, _updateFunction);
+            });
+        },
+
+        postFunction: function(){
+            _clearCanvasSeats();
+            var seats = [[true, true, true, true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true, true, true, true], [true, true, true, true, true, true, true, true, true, true, true, true]];
+            var movieName = $("#Movie-name").val();
+            var movieGenre = $("#Movie-genre").val();
+            var date = _date+" "+$("#Function-hour").val();
+            var f = {"movie": {"name": movieName, "genre": movieGenre}, "seats": seats, "date": date};
+            $.getScript(_module, function(){
+                api.postFunction(_cinema, f, _refreshFunctionsData);
+            });
+            $('#createFunction').modal('hide');
+        },
+
+        deleteFunction: function(){
+            console.log(_movieName+"   "+_date+" "+_hour);
+            _clearCanvasSeats();
+            $.getScript(_module, function(){
+                api.getFunctionByCinemaMovieAndDate(_cinema,_date+" "+_hour, _movieName, _removeFunction);
+            });
         }
     }
-    
 })();
