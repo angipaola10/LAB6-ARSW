@@ -58,6 +58,10 @@ Se desea generar una pequeña interfaz de administrador para el sistema de gesti
 			
       *  Como en este caso se tienen dos operaciones basadas en callbacks, y que las mismas requieren realizarse en un orden específico, tenga en cuenta cómo usar las 
       promesas de JavaScript [mediante alguno de los ejemplos disponibles](https://codepen.io/hcadavid/pen/jrwdgK).
+      
+      ![pag](HeavyClientCINEMA/img/pagina9.png)
+      
+      ![pag](HeavyClientCINEMA/img/pagina10.png)
 
 2. Agregue el botón 'Create new function', de manera que cuando se oprima:
 
@@ -72,6 +76,10 @@ Se desea generar una pequeña interfaz de administrador para el sistema de gesti
       1. Hacer POST al recurso /cinemas/{name}, para crear la nueva función.
 	  
 	  2. Hacer GET al respectivo recurso, para actualizar el listado de funciones.
+	  
+	 ![pag](HeavyClientCINEMA/img/pagina7.png)
+	 
+	 ![pag](HeavyClientCINEMA/img/pagina8.png)
 
 3. Agregue el botón 'DELETE', de manera que (también con promesas):
 
@@ -80,3 +88,7 @@ Se desea generar una pequeña interfaz de administrador para el sistema de gesti
       * Haga DELETE de la función actualmente seleccionada.
 
       * Haga GET de las funciones ahora disponibles.
+      
+      ![pag](HeavyClientCINEMA/img/pagina11.png)
+	 
+      ![pag](HeavyClientCINEMA/img/pagina12.png)
