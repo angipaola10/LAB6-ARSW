@@ -43,9 +43,6 @@ api = (function () {
                 promise
                     .then(res => {
                         callback();
-                    })
-                    .catch(error => {
-                        alert(error);
                     });
 
          },
@@ -64,18 +61,15 @@ api = (function () {
                     reject('FAIL');
                 });
             });
-
             promise
                 .then(res => {
                     callback();
-                })
-                .catch(error => {
-                    alert(error);
                 });
          },
 
          deleteFunction: function(cinema_name, f, callback){
             var cinemaFunction = JSON.stringify(f);
+            console.log(cinemaFunction);
             const promise = new Promise((resolve, reject) => {
                 $.ajax({
                     url: "http://localhost:8080/cinemas/" + cinema_name,
@@ -88,13 +82,9 @@ api = (function () {
                     reject('FAIL');
                 });
             });
-
             promise
                 .then(res => {
                     callback();
-                })
-                .catch(error => {
-                    alert(error);
                 });
          },
 

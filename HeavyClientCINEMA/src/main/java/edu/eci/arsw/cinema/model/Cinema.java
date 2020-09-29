@@ -99,15 +99,15 @@ public class Cinema {
     }
 
     public void deleteFunction(CinemaFunction cf) throws CinemaModelException {
-        int i = 0;
-        for(i = 0; i < functions.size(); i++){
+        boolean flag = false;
+        for(int i = 0; i < functions.size(); i++){
             if(functions.get(i).equals(cf)){
                 synchronized(functions.get(i)){
-                    functions.remove(functions.get(i)); break;
+                    functions.remove(functions.get(i)); flag = true;break;
                 }
             }
         }
-        if(i == functions.size()){
+        if(!flag){
             throw new CinemaModelException("No exists this function");
         }
     }

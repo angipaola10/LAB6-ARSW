@@ -36,14 +36,12 @@ app = (function (){
     function _showMovies(){
         $("#cinemaSelected").text("Cinema Selected: "+_cinema);
         $("#movies").text("Movies:");
-        document.getElementById('functions').style.visibility = "visible";
     }
 
     function _updateSeats(f){
         if (f != null) {
             _clearCanvasSeats();
             $("#availabilityOf").text("Availability of: "+ f.movie.name);
-            document.getElementById('Availability').style.visibility = "visible";
             var seats = f.seats;
             var c = document.getElementById("seatsCanvas");
             var ctx = c.getContext("2d");
@@ -76,7 +74,7 @@ app = (function (){
     }
 
     function _clearCanvasSeats(){
-        document.getElementById('Availability').style.visibility = "hidden";
+        $("#availabilityOf").text("Availability");
         var canvas = document.getElementById("seatsCanvas");
         var ctx = canvas.getContext("2d");
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -143,11 +141,12 @@ app = (function (){
                 api.postFunction(_cinema, f, _refreshFunctionsData);
             });
             $('#createFunction').modal('hide');
+            console.log(_cinema+","+_movieName+","+_date);
         },
 
         deleteFunction: function(){
-            console.log(_movieName+"   "+_date+" "+_hour);
             _clearCanvasSeats();
+            $("#functionsTable > tbody").empty();
             $.getScript(_module, function(){
                 api.getFunctionByCinemaMovieAndDate(_cinema,_date+" "+_hour, _movieName, _removeFunction);
             });
